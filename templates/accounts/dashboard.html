@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+{% include 'includes/alerts.html' %}
+<div class="container py-2">
+	<div class="row">
+	{% include 'includes/dashboard_sidebar.html' %}
+	<main class="col-md-9">
+		<article class="card">
+		<header class="card-header">
+			<strong class="d-inline-block mr-3">Logged in as:</strong>
+			<span>{{user.full_name}}</span>
+			
+		</header>
+		<div class="row">
+            <div class="col-sm-12">
+                <!-- meta -->
+                <div class="profile-user-box card-box bg-custom">
+					
+							<div class="row">
+								<div class="col-lg-2 order-1">
+									<span class="float-start">
+										<img src="{{userprofile.profile_picture.url}}" alt="User Profile Picture" class="thumb-lg rounded-circle">
+									</span>
+								</div>
+								<div class="col-sm-7 order-2">
+									<div class="text-right">
+										<div class="media-body text-white">
+											<h4 class="mt-1 mb-1 font-18">{{user.full_name}}</h4>
+											<p class="font-13 text-light">{{user.email}}</p>
+											<p class="font-13 text-light">{{user.phone_number}}</p>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-3 text-end order-3">
+									<div ><a class="btn btn-light btn-sm px-4" href="{% url 'edit_profile' %}"><strong>Edit Profile</strong></a></div>
+								</div>
+							</div>
+                </div>
+                <!--/ meta -->
+            </div>
+        </div>
+		<div class="card-body">
+			<div class="row">
+
+			<div class="col-md-6">
+				<div class="card" style="text-align:center;">
+					<div class="card-body">
+						<h5 class="card-title">Total Orders</h5>
+						<h4>{{orders_count}}</h4>
+						<a href="{% url 'my_orders' %}">View Orders</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="card" style="text-align:center;">
+					<div class="card-body">
+						<img src="{{userprofile.profile_picture.url}}" alt="User Profile Picture" width="50" height="50" style="border-radius:50%;">
+						<p class="mb-0">{{user.email}}</p>
+						<p>{{user.phone_number}}</p>
+					</div>
+				</div>
+			</div>
+
+			</div> <!-- row.// -->
+		</div> <!-- card-body .// -->
+		<div class="container">
+    <div class="form">
+        <div class="contact-info">
+            <h3 class="title">Let's get in touch</h3>
+            <p class="text"> Contact us with the following details. and fillup the form with the details. </p>
+            <div class="info">
+                <div class="social-information"> <i class="fa fa-map-marker"></i>
+                    <p>NPM,NY,USA</p>
+                </div>
+                <div class="social-information"> <i class="fa fa-envelope-o"></i>
+                    <p>contact@bbbootstrap.com</p>
+                </div>
+                <div class="social-information"> <i class="fa fa-mobile-phone"></i>
+                    <p>+1 989 989 9898 </p>
+                </div>
+            </div>
+            <div class="social-media">
+                <p>Connect with us :</p>
+                <div class="social-icons"> <a href="#"> <i class="fa fa-facebook-f"></i> </a> <a href="#"> <i class="fa fa-twitter"></i> </a> <a href="#"> <i class="fa fa-instagram"></i> </a> <a href="#"> <i class="fa fa-linkedin"></i> </a> </div>
+            </div>
+        </div>
+        <div class="contact-info-form"> <span class="circle one"></span> <span class="circle two"></span>
+            <form action="index.html" autocomplete="off">
+                <h3 class="title">Contact us</h3>
+                <div class="social-input-containers"> <input type="text" name="name" class="input" /> <label for="">Username</label> <span>Username</span> </div>
+                <div class="social-input-containers"> <input type="email" name="email" class="input" /> <label for="">Email</label> <span>Email</span> </div>
+                <div class="social-input-containers"> <input type="tel" name="phone" class="input" /> <label for="">Phone</label> <span>Phone</span> </div>
+                <div class="social-input-containers textarea"> <textarea name="message" class="input"></textarea> <label for="">Message</label> <span>Message</span> </div> <input type="submit" value="Send" class="btn" />
+            </form>
+        </div>
+    </div>
+</div>
+		</article> <!-- order-group.// -->
+	</main>
+</div> <!-- row.// -->
+
+
+{% endblock %}

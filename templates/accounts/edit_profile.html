@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<section class="section-conten padding-y bg">
+
+{% include 'includes/alerts.html' %}
+<div class="container">
+	<div class="row">
+	
+	{% include 'includes/dashboard_sidebar.html' %}
+	
+	<article class="card col-lg-8  mx-auto" style="box-Shadow: 0 0 6px grey">
+		<header class="card-header">
+			<strong class="d-inline-block mr-3">Edit your profile</strong>
+		</header>
+		<div class="card-body border-0">
+			<div class="text-center">
+				<img src="{{userprofile.profile_picture.url}}" alt="User Profile Picture" class="thumb-lg rounded-circle">
+			</div>
+			<br/>
+			<div class="row">
+			
+				<form class="account-form card mb-4"action="{% url 'edit_profile' %}" method="POST" enctype="multipart/form-data">
+					{% csrf_token %}
+					<div>
+					<br/>
+					<div class="row g-3">
+						<div class="col-sm-6 form-group">
+							<label class="py-1">First Name</label>
+							{{user_form.first_name}}
+						</div>
+						<div class="col-sm-6 form-group">
+							<label class="py-1">Last Name</label>
+							{{user_form.last_name}}
+						</div>
+					</div>
+					<br/>
+					<div class="row g-3">
+						<div class="form-group col-sm-6">
+							<label class="py-1">Phone Number</label>
+							{{user_form.phone_number}}
+						</div>
+						<div class="form-group col-sm-6">
+							<label class="py-1">Profile Picture</label>
+							{{profile_form.profile_picture}}
+						</div>
+					</div>
+					<br/>
+					<div class="form-group">
+						<label class="py-1">Address Line 1</label>
+						{{profile_form.address_line_1}}
+					</div>
+					<div class="form-group">
+						<label class="py-1">Address Line 2</label>
+						{{profile_form.address_line_2}}
+					</div>
+					<br/>
+					<div class="row g-3">
+						<div class="form-group col-md-4">
+							<label class="py-2">City</label>
+							{{profile_form.city}}
+						</div>
+						<div class="form-group col-md-4">
+							<label class="py-2">County</label>
+							{{profile_form.state}}
+						</div>
+						<div class="form-group col-md-4">
+							<label class="py-2">Locality</label>
+							{{profile_form.country}}
+						</div>
+					</div>
+					<br/>					
+				</div>
+				<div class="d-flex justify-content-center">
+					<input type="submit" value="Save" class="btn btn-success mb-3 d-flex justify-content-center"/>
+				</div>
+				<br/>
+				</form>
+			
+			</div> <!-- row.// -->
+		</div> <!-- card-body .// -->
+
+		</article> <!-- order-group.// -->
+	
+</div> <!-- row.// -->
+</div>
+
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<section class="section-content padding-y">
+
+	<div class="container py-5">
+    	<div class="col-md-7 col-lg-8  mx-auto" style="box-Shadow: 0 0 6px grey">
+    		{% include 'includes/alerts.html' %}
+				<form class="account-form card mb-4" action="{% url 'register' %}" method="POST">
+					<div class="card-body">
+      				{% csrf_token %}
+					  <h3 class="p-4 card-header text-center">Sign Up</h3>
+					  <br/>
+						<div class="row g-3">
+							<div class="col-sm-6 form-group">
+								<label class="py-1">First name</label>
+								{{ form.first_name }}
+							</div> <!-- form-group end.// -->
+							<div class="col-sm-6 form-group">
+								<label  class="py-1">Last name</label>
+								{{ form.last_name }}
+							</div> <!-- form-group end.// -->
+						</div> <!-- form-row end.// -->
+						<br/>
+						<div class="row g-3">
+							<div class="col-sm-6 form-group">
+								<label  class="py-1">Email Address</label>
+								{{form.email}}
+							</div> <!-- form-group end.// -->
+							<div class="col-sm-6 form-group">
+								<label  class="py-1">Phone Number</label>
+								{{form.phone_number}}
+							</div> <!-- form-group end.// -->
+						</div> <!-- form-row.// -->
+						<br/>
+						<div class="form-row">
+							<div class="form-group">
+								<label  class="py-1">Create password</label>
+								{{ form.password }}
+							</div> <!-- form-group end.// -->
+							<br/>
+							<div class="form-group">
+								<label  class="py-1">Repeat password</label>
+								{{form.confirm_password}}
+							</div> <!-- form-group end.// -->
+						</div>
+						<br/>
+						<div class="form-group">
+			        		<button type="submit" class="btn btn-success btn-block"> Register  </button>
+			    		</div> <!-- form-group// -->
+						{{ form.email.errors }}
+						{{ form.non_field_errors }}
+					</div>	
+				</form>
+			</div><!-- card-body.// -->
+		</div>
+    </div> <!-- card .// -->
+    <p class="text-center mt-2">Have an account? <a href="{% url 'login' %}">Sign In</a></p>
+    <br><br>
+
+</section>
+
+{% endblock %}
